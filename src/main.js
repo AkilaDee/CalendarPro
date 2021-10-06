@@ -2,20 +2,20 @@ import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify';
 import VueTextareaAutosize from 'vue-textarea-autosize';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
+import  firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 
 Vue.use(VueTextareaAutosize);
 
 Vue.config.productionTip = false
 
 firebase.initializeApp({
-  apiKey: "AIzaSyA7j9GQqAwCorXfItKl9JXUZQ_8oe_he44",
-  authDomain: "calendar-pro-app.firebaseapp.com",
-  projectId: "calendar-pro-app",
-  storageBucket: "calendar-pro-app.appspot.com",
-  messagingSenderId: "693493156821",
-  appId: "1:693493156821:web:e8588baa31ba16e14fcb5c"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.API_ID,
 });
 
 export const db = firebase.firestore();
