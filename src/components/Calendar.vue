@@ -66,6 +66,7 @@
 
 
 <script>
+import { db } from '@/main';
 export default{
       data:() =>({
             today:new Date().toISOString().substr(0, 10),
@@ -89,7 +90,26 @@ export default{
             events: [],
             dialog:false,
 
-      })
+      }),
+      mounted(){
+            this.getEvents();
+      },
+      methods:{
+            async getEvents(){
+                  let snapshot = await db.collection('calevent').get();
+                  let events = [];
+                  // console.log(snapshot)
+                  snapshot.forEach(doc =>{
+
+                    let appData = doc.data();
+                    console.log(doc)
+                    appData.id = doc.id;
+                    events.push(appData);
+                    
+                  });
+                  this.events = events;
+            }     
+      }
 
       };
 
