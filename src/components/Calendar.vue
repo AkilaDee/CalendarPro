@@ -123,12 +123,14 @@
               </form>
             </v-card-text>
             <v-card-actions>
-              <v-btn
-                text
-                color="secondary"
+              <v-btn text color="secondary"
                 @click="selectedOpen = false"
-              >
-                Cancel
+              >Close </v-btn>
+              <v-btn text v-if="currentlyEditing!== selectedEvent.id"
+                @click.prevent="editEvent(selectedEvent)">Edit
+              </v-btn>
+              <v-btn text v-else
+                @click.prevent="updateEvent(selectedEvent)">Save
               </v-btn>
             </v-card-actions>
           </v-card>
